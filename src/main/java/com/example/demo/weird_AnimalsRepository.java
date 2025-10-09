@@ -13,10 +13,10 @@ public interface weird_AnimalsRepository extends JpaRepository<weird_Animals, Lo
     List<weird_Animals> getAnimalsBySpecies(String species);
 
     //custom query to search by habitat
-    @Query(value = "select * from weird_Animals s where s.habitat like %?1%", nativeQuery = true)
-    List<weird_Animals> getAnimalsByHabitat(String habitat);
+    @Query(value = "select * from \"weird animals\" s where s.habitat like %?1%", nativeQuery = true)
+List<weird_Animals> getAnimalsByHabitat(String habitat);
 
     //custom query to search by name
-    @Query(value = "select * from weird_Animals s where s.name like %?1% ", nativeQuery = true)
+    @Query(value = "select * from \"weird animals\" s where s.name like %?1% ", nativeQuery = true)
     List<weird_Animals> getAnimalsByName(String name);
 }

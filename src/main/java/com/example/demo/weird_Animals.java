@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity // relates a class to a database table
-@Table(name = "Weird Animals") // do not need to name table
+@Table(name = "weird animals") // match Neon database table name
 public class weird_Animals {
 	// Attributes of the animal
 	@Id // Primary key

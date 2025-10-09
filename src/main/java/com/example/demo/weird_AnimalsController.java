@@ -23,9 +23,13 @@ public class weird_AnimalsController {
    *
    * @return List of all weird animals
    */
-  @GetMapping("/weird-animals") //show everything in the weird animals table
-  public Object getAllWeirdAnimals() {
-    return weird_AnimalService.getAllWeirdAnimals();
+  @GetMapping("/weird-animals") //show everything in the weird animals table or filter by habitat
+  public Object getAllWeirdAnimals(@RequestParam(value = "habitat", required = false) String habitat) {
+    if (habitat != null && !habitat.isEmpty()) {
+      return weird_AnimalService.getWeirdAnimalsByHabitat(habitat);
+    } else {
+      return weird_AnimalService.getAllWeirdAnimals();
+    }
   }
 
   /**
@@ -45,15 +49,14 @@ public class weird_AnimalsController {
    * @param name The name of the weird animal to search for
    * @return List of weird animals with the specified name
    */
-  @GetMapping("/weird-animals/name") //search for weird animals by name
-  public Object getWeirdAnimalsByName(@RequestParam String key) {
+  @GetMapping("/weird-animals/name")
+public Object getWeirdAnimalsByName(@RequestParam String key) {
     if (key != null) {
-      return weird_AnimalService.getWeirdAnimalsByName(key);
+        return weird_AnimalService.getWeirdAnimalsByName(key);
     } else {
-      return weird_AnimalService.getAllWeirdAnimals();
+        return weird_AnimalService.getAllWeirdAnimals();
     }
-
-  }
+}
 
     /**
      * Endpoint to get weird animals by habitat
@@ -61,15 +64,14 @@ public class weird_AnimalsController {
      * @param habitat The habitat of the weird animal to search for
      * @return List of weird animals with the specified habitat
      */
-    @GetMapping("/weird-animals/habitat") //search for weird animals by habitat
-    public Object getWeirdAnimalsByHabitat(@RequestParam String key) {
-        if (key != null) {
-            return weird_AnimalService.getWeirdAnimalsByHabitat(key);
-        } else {
-            return weird_AnimalService.getAllWeirdAnimals();
-        }
-
-    }
+  @GetMapping("/weird-animals/habitat") //search for weird animals by habitat
+  public Object getWeirdAnimalsByHabitat(@RequestParam(value = "key", required = false) String key) {
+      if (key != null && !key.isEmpty()) {
+          return weird_AnimalService.getWeirdAnimalsByHabitat(key);
+      } else {
+          return weird_AnimalService.getAllWeirdAnimals();
+      }
+  }
 
     /**
      * Endpoint to get weird animals by species
