@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazing Animals</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="api.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <h1 class="main-heading">Most weird animals on the planet</h1>
+
+    <div class="button-section">
+        <div class="button-row">
+            <a href="index.html"><button>Home</button></a>
+            <a href="details.html"><button>Details</button></a>
+            <a href="about.html"><button>About</button></a>
+            <a href="new-animal-form.html"><button>New Animal</button></a>
+        </div>
+    </div>
+
+    <!-- Search bar below button section -->
+    <div class="search-bar-container">
+        <form>
+            <input type="text" id="searchBar" placeholder="Search for an animal..." />
+            <button type="submit" id="searchButton">Search</button>
+        </form>
+    </div>
+
+    <!-- Loading message - will be replaced by dynamic content -->
+    <div id="loading-message" style="text-align: center; margin: 20px;">
+        Loading animals...
+    </div>
+
+    <!-- Animals will be dynamically loaded here by JavaScript -->
+
+</body>
+
+</html>
