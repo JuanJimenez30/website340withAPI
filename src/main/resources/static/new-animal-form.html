@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a New Animal</title>
+    <link rel="stylesheet" href="new-animal.css">
+</head>
+<body>
+    <div class="button-section">
+        <div class="button-row">
+            <a href="index.html"><button>Home</button></a>
+            <a href="details.html"><button>Details</button></a>
+            <a href="about.html"><button>About</button></a>
+            <a href="new-animal-form.html"><button>New Animal</button></a>
+        </div>
+    </div>
+
+    <main class="new-animal-main">
+        <h1>Add a New Animal to the Gallery</h1>
+        <form class="new-animal-form">
+            <label for="animal-name">Name:</label>
+            <input type="text" id="animal-name" name="animal-name" required>
+
+            <label for="animal-type">Type:</label>
+            <input type="text" id="animal-type" name="animal-type" required>
+
+            <label for="animal-age">Age:</label>
+            <input type="number" id="animal-age" name="animal-age" min="0" required>
+
+            <label for="animal-species">Species:</label>
+            <input type="text" id="animal-species" name="animal-species" required>
+
+            <label for="animal-habitat">Habitat:</label>
+            <input type="text" id="animal-habitat" name="animal-habitat">
+
+            <label for="animal-description">Description:</label>
+            <textarea id="animal-description" name="animal-description" rows="4" required></textarea>
+
+            <label for="animal-image">Image URL:</label>
+            <input type="url" id="animal-image" name="animal-image">
+
+            <button type="submit">Add Animal</button>
+        </form>
+    </main>
+</body>
+</html>
