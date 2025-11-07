@@ -98,8 +98,9 @@ function createAnimalFigure(animal) {
 function getImageForAnimal(animalName) {
     const imageMap = {
         'Spider': 'Imagesfor340web/Samuria_Spider.jpg',
+        'monkey': 'Imagesfor340web/Proboscis_Monkey.jpg',  // Fixed: lowercase 'monkey' to match database
         'Snake': 'Imagesfor340web/Snake_Image.jpg',
-        'Monkey': 'Imagesfor340web/Proboscis_Monkey.jpg',
+        'Monkey': 'Imagesfor340web/Proboscis_Monkey.jpg',  // Keep both cases for flexibility
         'Shark': 'Imagesfor340web/Goblin_Shark.jpg',
         'Blue Dragon': 'Imagesfor340web/Blue_Dragon.jpg',
         'Goblin Shark': 'Imagesfor340web/Goblin_Shark.jpg',
@@ -107,8 +108,8 @@ function getImageForAnimal(animalName) {
         'Joro Spider': 'Imagesfor340web/Samuria_Spider.jpg'
     };
     
-    // Return mapped image or a default placeholder
-    return imageMap[animalName] || 'Imagesfor340web/default.jpg';
+    // Return mapped image or a default placeholder (World.jpg as fallback)
+    return imageMap[animalName] || 'Imagesfor340web/World.jpg';
 }
 
 // Function to setup search functionality

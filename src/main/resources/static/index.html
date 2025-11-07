@@ -30,6 +30,19 @@
         </form>
     </div>
 
+    <!-- Habitat filter buttons -->
+    <div class="filter-container">
+        <h3>Filter by Habitat:</h3>
+        <div class="filter-buttons">
+            <button onclick="showAllAnimals()">All Animals</button>
+            <button onclick="filterByHabitat('Ocean')">Ocean</button>
+            <button onclick="filterByHabitat('Forest')">Forest</button>
+            <button onclick="filterByHabitat('Desert')">Desert</button>
+            <button onclick="filterByHabitat('Rainforest')">Rainforest</button>
+            <button onclick="filterByHabitat('Jungle')">Jungle</button>
+        </div>
+    </div>
+
     <!-- Loading message - will be replaced by dynamic content -->
     <div id="loading-message" style="text-align: center; margin: 20px;">
         Loading animals...
