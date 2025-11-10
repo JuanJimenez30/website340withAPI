@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fierce Snake Details</title>
+    <title>Animal Details</title>
     <link rel="stylesheet" href="details.css">
+    <script src="api.js"></script>
+    <script src="details.js"></script>
 </head>
 <body>
     <div class="button-section">
@@ -17,20 +19,26 @@
     </div>
 
     <main class="details-main">
-        <h1 class="details-heading">Oxyuranus microlepidotus (Fierce Snake)</h1>
-        <img src="Imagesfor340web/Snake_Image.jpg" alt="Fierce Snake" class="details-image">
-        <p>
-            The <strong>Oxyuranus microlepidotus</strong>, commonly known as the fierce snake or inland taipan, is recognized as the most venomous snake in the world. Native to semi-arid regions of Australia, this snake can grow up to 8 feet long. Despite its potent venom, the fierce snake is rarely encountered by humans.
-        </p>
-        <ul>
-            <li><strong>Habitat:</strong> Semi-arid regions of central Australia</li>
-            <li><strong>Length:</strong> Can grow Up to 8 feet</li>
-            <li><strong>Venom:</strong> Most toxic of any snake species</li>
-            <li><strong>Behavior:</strong> Shy and non-aggressive but will bite if provoked</li>
-        </ul>
-        <p>
-            The fierce snake’s venom is extremely potent, but it is not considered dangerous to humans due to its timid nature and remote habitat. It primarily feeds on small mammals and is an important part of its ecosystem. 
-        </p>
+        <div id="loading-message" style="text-align: center; margin: 50px;">
+            Loading animal details...
+        </div>
+        
+        <div id="animal-details" style="display: none;">
+            <h1 id="animal-title" class="details-heading"></h1>
+            <img id="animal-image" alt="" class="details-image">
+            <p id="animal-description"></p>
+            <ul id="animal-info">
+                <li><strong>Habitat:</strong> <span id="animal-habitat"></span></li>
+                <li><strong>Species:</strong> <span id="animal-species"></span></li>
+                <li><strong>ID:</strong> <span id="animal-id"></span></li>
+            </ul>
+        </div>
+        
+        <div id="error-message" style="display: none; text-align: center; color: red; margin: 50px;">
+            <h2>Animal not found</h2>
+            <p>The requested animal could not be found.</p>
+            <a href="index.html">← Back to Home</a>
+        </div>
     </main>
 </body>
 </html>

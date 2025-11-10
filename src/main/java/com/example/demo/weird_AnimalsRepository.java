@@ -10,8 +10,6 @@ import org.springframework.stereotype.Repository;
 //sql queries are in here and if we need extra ones they go here.
 public interface weird_AnimalsRepository extends JpaRepository<weird_Animals, Long> {
 
-    List<weird_Animals> getAnimalsBySpecies(String species);
-
     //custom query to search by habitat
     @Query(value = "select * from \"weird animals\" s where s.habitat like %?1%", nativeQuery = true)
 List<weird_Animals> getAnimalsByHabitat(String habitat);
