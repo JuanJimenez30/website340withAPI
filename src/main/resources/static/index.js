@@ -91,6 +91,25 @@ function createAnimalFigure(animal) {
     
     figure.appendChild(figcaption);
     
+    // Add edit and delete buttons
+    const buttonContainer = document.createElement('div');
+    buttonContainer.className = 'animal-actions';
+    buttonContainer.style.marginTop = '10px';
+    
+    const editButton = document.createElement('button');
+    editButton.textContent = 'Edit';
+    editButton.className = 'edit-btn';
+    editButton.onclick = () => openEditModal(animal);
+    
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.className = 'delete-btn';
+    deleteButton.onclick = () => confirmDeleteAnimal(animal.animalId);
+    
+    buttonContainer.appendChild(editButton);
+    buttonContainer.appendChild(deleteButton);
+    figure.appendChild(buttonContainer);
+    
     return figure;
 }
 
@@ -150,4 +169,78 @@ async function filterByHabitat(habitat) {
 // Function to show all animals (reset filter)
 async function showAllAnimals() {
     await loadAnimals();
+}
+
+// Function to open edit modal
+function openEditModal(animal) {
+    const modal = document.getElementById('editModal');
+    
+    // Fill form with current animal data
+    document.getElementById('editAnimalId').value = animal.animalId;
+    document.getElementById('editName').value = animal.name;
+    document.getElementById('editDescription').value = animal.description;
+    document.getElementById('editHabitat').value = animal.habitat || '';
+    document.getElementById('editSpecies').value = animal.species || '';
+    
+    modal.style.display = 'block';
+}
+
+// Function to close edit modal
+function closeEditModal() {
+    const modal = document.getElementById('editModal');
+    modal.style.display = 'none';
+}
+
+// Function to handle edit form submission
+async function handleEditSubmit(event) {
+    event.preventDefault();
+    
+    const animalId = document.getElementById('editAnimalId').value;
+    const animalData = {
+        animalId: parseInt(animalId),
+        name: document.getElementById('editName').value,
+        description: document.getElementById('editDescription').value,
+        habitat: document.getElementById('editHabitat').value,
+        species: document.getElementById('editSpecies').value
+    };
+    
+    try {
+        const updatedAnimal = await updateAnimal(animalId, animalData);
+        if (updatedAnimal) {
+            closeEditModal();
+            await loadAnimals(); // Refresh the list
+            alert('Animal updated successfully!');
+        } else {
+            alert('Failed to update animal. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error updating animal:', error);
+        alert('An error occurred while updating the animal.');
+    }
+}
+
+// Function to confirm and delete animal
+async function confirmDeleteAnimal(animalId) {
+    if (confirm('Are you sure you want to delete this animal? This action cannot be undone.')) {
+        try {
+            const result = await deleteAnimal(animalId);
+            if (result) {
+                await loadAnimals(); // Refresh the list
+                alert('Animal deleted successfully!');
+            } else {
+                alert('Failed to delete animal. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error deleting animal:', error);
+            alert('An error occurred while deleting the animal.');
+        }
+    }
+}
+
+// Close modal when clicking outside of it
+window.onclick = function(event) {
+    const modal = document.getElementById('editModal');
+    if (event.target == modal) {
+        closeEditModal();
+    }
 }

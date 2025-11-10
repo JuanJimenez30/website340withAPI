@@ -48,6 +48,44 @@
         Loading animals...
     </div>
 
+    <!-- Edit Animal Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Animal</h2>
+                <span class="close" onclick="closeEditModal()">&times;</span>
+            </div>
+            <form id="editAnimalForm" onsubmit="handleEditSubmit(event)">
+                <input type="hidden" id="editAnimalId">
+                
+                <div class="form-group">
+                    <label for="editName">Name:</label>
+                    <input type="text" id="editName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editDescription">Description:</label>
+                    <textarea id="editDescription" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editHabitat">Habitat:</label>
+                    <input type="text" id="editHabitat">
+                </div>
+                
+                <div class="form-group">
+                    <label for="editSpecies">Species:</label>
+                    <input type="text" id="editSpecies">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Save Changes</button>
+                    <button type="button" class="cancel-btn" onclick="closeEditModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Animals will be dynamically loaded here by JavaScript -->
 
 </body>

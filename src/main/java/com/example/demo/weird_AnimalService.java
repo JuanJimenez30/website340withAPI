@@ -1,13 +1,8 @@
 package com.example.demo;
 
-import java.io.IOException;
-import java.io.File;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service //connects service to repository
 public class weird_AnimalService {
@@ -53,15 +48,6 @@ public class weird_AnimalService {
   public Object getWeirdAnimalsByHabitat(String habitat) {
     return weird_AnimalsRepository.getAnimalsByHabitat(habitat);
   }
-    /**
-     * Method to get weird animals by species
-     *
-     * @param species The species of the weird animal to search for
-     * @return List of weird animals with the specified species
-     */
-    public Object getWeirdAnimalsBySpecies(String species) {
-        return weird_AnimalsRepository.getAnimalsBySpecies(species);
-    }
     
   /**
    * Method to add a new weird animal
@@ -89,39 +75,6 @@ public class weird_AnimalService {
    */
   public void deleteWeirdAnimal(Long animalId) {
     weird_AnimalsRepository.deleteById(animalId);
-  }
-
-  /**
-   * Method to write a weird animal object to a JSON file
-   *
-   * @param weirdAnimal The weird animal object to write
-   */
-  public String writeJson(weird_Animals weirdAnimal) {
-    ObjectMapper objectMapper = new ObjectMapper();
-    try {
-      objectMapper.writeValue(new File("weirdAnimals.json"), weirdAnimal);
-      return "Weird animal written to JSON file successfully";
-    } catch (IOException e) {
-      e.printStackTrace();
-      return "Error writing weird animal to JSON file";
-    }
-
-  }
-
-  /**
-   * Method to read a student object from a JSON file
-   *
-   * @return The student object read from the JSON file
-   */
-  public Object readJson() {
-    ObjectMapper objectMapper = new ObjectMapper();
-    try {
-      return objectMapper.readValue(new File("weirdAnimals.json"), weird_Animals.class);
-    } catch (IOException e) {
-      e.printStackTrace();
-      return null;
-    }
-
   }
 
 }
